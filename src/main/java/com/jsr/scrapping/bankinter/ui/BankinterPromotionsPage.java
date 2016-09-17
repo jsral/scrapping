@@ -1,6 +1,5 @@
 package com.jsr.scrapping.bankinter.ui;
 
-import com.jsr.scrapping.bankinter.ui.BankinterLandingPage;
 import com.jsr.scrapping.selenium.Finder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;

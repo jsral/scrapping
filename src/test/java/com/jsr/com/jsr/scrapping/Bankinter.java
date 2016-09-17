@@ -1,5 +1,4 @@
-package com.jsr.scrapping.bankinter;
-
+package com.jsr.com.jsr.scrapping;
 
 import com.jsr.scrapping.bankinter.ui.BankinterLoginPage;
 import com.jsr.scrapping.data.UsersLoader;

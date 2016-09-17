@@ -1,6 +1,5 @@
 package com.jsr.scrapping.bankinter.ui;
 
-import com.jsr.scrapping.bankinter.ui.BankinterLandingPage;
 import com.jsr.scrapping.model.Account;
 import com.jsr.scrapping.selenium.Finder;
 import org.openqa.selenium.By;

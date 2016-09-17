@@ -1,6 +1,7 @@
 package com.jsr.scrapping.bankinter.ui;
 
 
+import com.jsr.scrapping.bankinter.extractor.AccountDataExtractor;
 import com.jsr.scrapping.model.Account;
 import com.jsr.scrapping.selenium.Finder;
 import org.openqa.selenium.By;
@@ -24,15 +25,20 @@ public class BankinterLandingPage {
 
     public List<Account> getAccounts()
     {
-        BankinterPromotionsPage promotionsPage = new BankinterPromotionsPage (driver);
+        BankinterPromotionsPage promotionsPage = new BankinterPromotionsPage(driver);
+        AccountDataExtractor dataExtractor = new AccountDataExtractor(driver);
 
         if (promotionsPage.isPresent()) {
             promotionsPage.next();
         }
 
+
+
+        List<Account> accounts = dataExtractor.get();
+
         disconnect();
 
-        return null;
+        return accounts;
     }
 
 
