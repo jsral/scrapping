@@ -2,6 +2,7 @@ package com.jsr.scrapping.bankinter;
 
 
 import com.jsr.scrapping.bankinter.ui.BankinterLoginPage;
+import com.jsr.scrapping.data.UsersLoader;
 import com.jsr.scrapping.model.Account;
 import com.jsr.scrapping.selenium.UIServer;
 import org.junit.AfterClass;
@@ -50,10 +51,14 @@ public class Bankinter {
 
     private void testGetAccounts(WebDriver driver)
     {
-        driver.get("http://bankinter.com");
         BankinterLoginPage loginPage = new BankinterLoginPage(driver);
+        UsersLoader loader = new UsersLoader();
 
-        List<Account> accounts = loginPage.getAccounts("JSANROMAN", "Mjhp6733");
+        driver.get("http://bankinter.com");
+        String id = loader.getUserIdFor("bankinter");
+        String pin = loader.getPinFor("bankinter");
+
+        List<Account> accounts = loginPage.getAccounts(id, pin);
 
         for (Account account: accounts) {
             account.print();
