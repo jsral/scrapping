@@ -1,11 +1,14 @@
 package com.jsr.scrapping.bankinter.ui;
 
 
+import com.jsr.scrapping.model.Account;
 import com.jsr.scrapping.selenium.Finder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class BankinterLandingPage {
 
@@ -19,7 +22,7 @@ public class BankinterLandingPage {
     }
 
 
-    public void gotoAccounts()
+    public List<Account> getAccounts()
     {
         BankinterPromotionsPage promotionsPage = new BankinterPromotionsPage (driver);
 
@@ -28,6 +31,8 @@ public class BankinterLandingPage {
         }
 
         disconnect();
+
+        return null;
     }
 
 

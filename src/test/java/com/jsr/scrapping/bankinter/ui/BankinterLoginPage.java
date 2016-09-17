@@ -1,11 +1,14 @@
 package com.jsr.scrapping.bankinter.ui;
 
 import com.jsr.scrapping.bankinter.ui.BankinterLandingPage;
+import com.jsr.scrapping.model.Account;
 import com.jsr.scrapping.selenium.Finder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class BankinterLoginPage {
 
@@ -20,11 +23,11 @@ public class BankinterLoginPage {
     }
 
 
-    public BankinterLandingPage login(String id, String pin)
+    public List<Account> getAccounts(String id, String pin)
     {
         setId(id);
         setPin(pin);
-        return doLogin();
+        return getAccounts();
     }
 
 
@@ -43,14 +46,13 @@ public class BankinterLoginPage {
     }
 
 
-    private BankinterLandingPage doLogin()
+    private List<Account> getAccounts()
     {
         WebElement enter = Finder.by(driver, By.xpath("//*[@id=\"frmLogin\"]/div[6]/input"));
         BankinterLandingPage landingPage = new BankinterLandingPage(driver);
 
         enter.click();
-        landingPage.gotoAccounts();
-
-        return null;
+        return landingPage.getAccounts();
     }
+
 }

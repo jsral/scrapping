@@ -2,12 +2,15 @@ package com.jsr.scrapping.bankinter;
 
 
 import com.jsr.scrapping.bankinter.ui.BankinterLoginPage;
+import com.jsr.scrapping.model.Account;
 import com.jsr.scrapping.selenium.UIServer;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.safari.SafariDriver;
+
+import java.util.List;
 
 
 public class Bankinter {
@@ -32,12 +35,12 @@ public class Bankinter {
 
 
     @Test
-    public void testLoginUsingSafari()
+    public void testGetAccountsUsingSafari()
     {
         WebDriver driver = new SafariDriver();
 
         try {
-            testLogin(driver);
+            testGetAccounts(driver);
         }
         finally {
             driver.quit();
@@ -45,11 +48,15 @@ public class Bankinter {
     }
 
 
-    private void testLogin(WebDriver driver)
+    private void testGetAccounts(WebDriver driver)
     {
         driver.get("http://bankinter.com");
         BankinterLoginPage loginPage = new BankinterLoginPage(driver);
 
-        loginPage.login("JSANROMAN", "Mjhp6733");
+        List<Account> accounts = loginPage.getAccounts("JSANROMAN", "Mjhp6733");
+
+        for (Account account: accounts) {
+            account.print();
+        }
     }
 }
